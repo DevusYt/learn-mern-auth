@@ -9,7 +9,7 @@ const User = require('./models/user.model')
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://dbRoot:uLuNxBYrqDyPGdaR@testinginstance.nnyts.mongodb.net/jschuder')
+mongoose.connect('URI')
 
 app.post('/api/register', async (req, res) => {
     console.log(req.body)
