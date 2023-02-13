@@ -22,16 +22,24 @@ function App() {
         })
 
         const data = await response.json()
+
+        if (data.user) {
+            alert('Login successful')
+            window.location.href = '/dashboard'
+        } else {
+            alert('Login failed')
+        }
+
         console.log(data)
     }
 
     return (
         <div>
-            <h1>Register</h1>
+            <h1>Login</h1>
             <form onSubmit={loginUser}>
                 <input placeholder='Email' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input placeholder='Password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <input type="submit" value="Register" />
+                <input type="submit" value="Login" />
             </form>
         </div>
     )

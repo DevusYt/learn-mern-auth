@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken');
+
 const app = express()
 const port = 3000
 
@@ -36,7 +38,17 @@ app.post('/api/login', async (req, res) => {
     })
 
     if (user) {
-        return res.json({ status: 'ok', user: true });
+
+        const token = jwt.sign(
+            {
+                email: req.body.email,
+                name: req.body.name,
+            },
+            "pweaseChangeMe!!!1!!",
+            { expiresIn: '1h' }
+        )
+
+        return res.json({ status: 'ok', user: token });
     } else {
         return res.json({ status: 'error', user: false });
     }
